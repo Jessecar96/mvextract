@@ -61,7 +61,9 @@ namespace mvextract
             Array.Copy(bytes, 16, buffer, 0, 4);
             Array.Reverse(buffer);
             int numFrames = (int)BitConverter.ToUInt32(buffer, 0);
-            int bytesPerFrame = fileBytes / numFrames;
+
+            // Calculate bytes per frame from width and height
+            int bytesPerFrame = width * height * 4;
 
             Console.WriteLine("Width = {0}", width);
             Console.WriteLine("Height = {0}", height);
